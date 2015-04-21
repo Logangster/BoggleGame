@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="BoggleClient.GameBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             DataContext="{Binding RelativeSource={RelativeSource self}}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="-3,10,3,-10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock TextAlignment="Center" Grid.Column="6" Name="p2Name" Margin="0,-5,0,40"></TextBlock>
+        <TextBlock TextAlignment="Center" Grid.Column="2" Name="p1Name" Margin="0,-5,0,40" Grid.ColumnSpan="2"></TextBlock>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="p2Score" Margin="10" Grid.Column="6"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="p1Score" Margin="10" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <TextBlock TextAlignment="Center" Name="TimeRemaining" Grid.Column="4" Grid.Row="0" Margin="35,10,35,23" Grid.ColumnSpan="2">Time Remaining:</TextBlock>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot11" Margin="10,10,10,10" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot12" Margin="10,10,10,10" Grid.Column="4" Grid.Row="1"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot13" Margin="10,10,10,10" Grid.Column="5" Grid.Row="1"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot14" Margin="10,10,10,10" Grid.Column="6" Grid.Row="1"/>
+
+        <TextBox TextAlignment="Center"  IsReadOnly="True" Name="spot21" Margin="10,10,10,10" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot22" Margin="10,10,10,10" Grid.Column="4" Grid.Row="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot23" Margin="10,10,10,10" Grid.Column="5" Grid.Row="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot24" Margin="10,10,10,10" Grid.Column="6" Grid.Row="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot31" Margin="10,10,10,10" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot32" Margin="10,10,10,10" Grid.Column="4" Grid.Row="3"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot33" Margin="10,10,10,10" Grid.Column="5" Grid.Row="3"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot34" Margin="10,10,10,10" Grid.Column="6" Grid.Row="3"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot41" Margin="10,10,10,10" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot42" Margin="10,10,10,10" Grid.Column="4" Grid.Row="4"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot43" Margin="10,10,10,10" Grid.Column="5" Grid.Row="4"/>
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="spot44" Margin="10,10,10,10" Grid.Column="6" Grid.Row="4"/>
+
+        <TextBox Name="InputWord" Margin="10,10,10,21" Grid.ColumnSpan="4" Grid.Column="2" Grid.Row="5"></TextBox>
+        <Button Name="Submit" Grid.Column="6" Grid.Row="5" Margin="10,10,10,21" Click="Submit_Click">Submit</Button>
+
+        <TextBox TextAlignment="Center" IsReadOnly="True" Name="timeRemaining" Margin="35,27,35,10" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="0"/>
+
+    </Grid>
+</UserControl>

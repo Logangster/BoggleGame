@@ -1,0 +1,20 @@
+﻿BoggleClient
+
+
+winexe
+C#
+.cs
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\BoggleClient\obj\Debug\
+BoggleClient
+none
+false
+DEBUG;TRACE
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\BoggleClient\App.xaml
+71139417190
+
+18-491873705
+131957904154
+ConnectPage.xaml;GameBoard.xaml;GameEnds.xaml;PageSwitcher.xaml;ChooseOpponent.xaml;ViewUnaccessablePages.xaml;WaitingForResponse.xaml;
+
+False
+

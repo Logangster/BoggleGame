@@ -1,0 +1,7 @@
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\bin\Debug\Libraries.dll.config
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\bin\Debug\Libraries.dll
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\bin\Debug\Libraries.pdb
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\bin\Debug\StringSocketOfficial.dll
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\obj\Debug\Libraries.csprojResolveAssemblyReference.cache
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\obj\Debug\Libraries.dll
+C:\Users\Logan\Documents\Visual Studio 2013\Projects\PS10\Libraries\obj\Debug\Libraries.pdb

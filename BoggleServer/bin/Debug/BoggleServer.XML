@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BoggleServer</name>
+    </assembly>
+    <members>
+        <member name="T:BB.BoggleBoard">
+            <summary>
+            Represents a Boggle board.
+            </summary>
+        </member>
+        <member name="M:BB.BoggleBoard.#ctor">
+            <summary>
+            Creates a randomly-generated BoggleBoard 
+            </summary>
+        </member>
+        <member name="M:BB.BoggleBoard.#ctor(System.String)">
+            <summary>
+            Creates a BoggleBoard from the provided 16-letter string.  The
+            method is case-insensitive.  If there aren't exactly 16 letters
+            in the string, throws an ArgumentException.  The string consists
+            of the first row, then the second row, then the third, then the fourth.
+            </summary>
+        </member>
+        <member name="M:BB.BoggleBoard.MakeBoard(System.String)">
+            <summary>
+            Makes a board from the 16-letter string
+            </summary>
+        </member>
+        <member name="M:BB.BoggleBoard.ToString">
+            <summary>
+            Returns the 16 letters that make up this board.  It is formed
+            by appending the first row to the second row to the third row
+            to the fourth row.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BB.BoggleBoard.CanBeFormed(System.String)">
+            <summary>
+            Reports whether the provided word can be formed by tracking through
+            this Boggle board as described in the rules of Boggle.  The method
+            is case-insensitive.
+            </summary>
+        </member>
+        <member name="M:BB.BoggleBoard.CanBeFormed(System.String,System.Int32,System.Int32,System.Boolean[0:,0:])">
+            <summary>
+            Reports whether the provided word can be formed by tracking through
+            this Boggle board by beginning at location [i,j] and avoiding any
+            squares marked as visited.
+            </summary>
+        </member>
+        <member name="T:BoggleServer.Game">
+            <summary>
+            This is a game object that the BoggleServer uses in order to 
+            keep track of multiple boggle games at once. It will take in a word, 
+            process the word, and update the score based on what the word is worth
+            and whether it is valid or not. 
+            </summary>
+        </member>
+        <member name="M:BoggleServer.Game.#ctor(System.String,System.String,CustomNetworking.StringSocket,CustomNetworking.StringSocket,System.Collections.Generic.HashSet{System.String},System.Int32)">
+            <summary>
+            This is a 6 parameter constructor for the Game class. It does not take in a predefined board.
+            </summary>
+            <param name="player1Name"> The name passed by Player 1</param>
+            <param name="player2Name"> The name passed by Player 2</param>
+            <param name="p1Socket"> The Client socket for Player 1</param>
+            <param name="p2Socket"> The Client socket for Player 2</param>
+            <param name="wordDictionary"> The dictionary of legal words contained in a hash set</param>
+            <param name="gameTime"> The amount of Game Time that the game is going to go. </param>
+        </member>
+        <member name="M:BoggleServer.Game.#ctor(System.String,System.String,CustomNetworking.StringSocket,CustomNetworking.StringSocket,System.Collections.Generic.HashSet{System.String},System.Int32,System.String)">
+            <summary>
+            This is a seven parameter constructor for the Game class. 
+            </summary>
+            <param name="player1Name"> The name passed by Player 1</param>
+            <param name="player2Name"> The name passed by Player 2</param>
+            <param name="p1Socket"> The Client socket for Player 1</param>
+            <param name="p2Socket"> The Client socket for Player 2</param>
+            <param name="wordDictionary"> The dictionary of legal words contained in a hash set</param>
+            <param name="gameTime"> The amount of Game Time that the game is going to go. </param>
+            <param name="gameBoard"> A game board that is specified by the server when it is created</param>
+        </member>
+        <member name="M:BoggleServer.Game.gameTimeCountdown">
+            <summary>
+            Method to handle the interval timer. This is passed to a new thread via the constructor
+            </summary>
+        </member>
+        <member name="M:BoggleServer.Game.OneSecondPasses(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            This method is the event that happens each time a second passes with the interval timer
+            </summary>
+        </member>
+        <member name="M:BoggleServer.Game.processScore(System.String,System.Collections.Generic.HashSet{System.String},System.Collections.Generic.HashSet{System.String},System.Collections.Generic.HashSet{System.String},System.Collections.Generic.HashSet{System.String},System.Int32@,System.Int32@)">
+            <summary>
+            Method that processes the word to see if either of the user gains points or loses points, and handles adding the words to each hashset as neccesary
+            </summary>
+            <param name="word"> The word that was passed to the server from the client</param>
+            <param name="playerPlayed"> List of words that the player who sent the word has played</param>
+            <param name="otherPlayer"> List of words that the other player has played</param>
+            <param name="playerIllegal"> List of illegal words that the player who sent the word has played</param>
+            <param name="otherIllegal"> List of illegal words that the other player has played</param>
+            <param name="playerScore"> Score of the player that played the word</param>
+            <param name="otherScore"> Score of the other player </param>
+        </member>
+        <member name="M:BoggleServer.Game.scoreWord(System.String)">
+            <summary>
+            Determines point value of the word passed
+            </summary>
+            <param name="word"> Word being processed </param>
+            <returns></returns>
+        </member>
+        <member name="M:BoggleServer.Server.Main(System.String[])">
+            <summary>
+             Launches a server that that runs on port 2500
+            </summary>
+            <param name="args">args passed in on command line</param>
+        </member>
+        <member name="M:BoggleServer.Server.#ctor(System.Int32,System.String[])">
+            <summary>
+            Creates a Boggleserver that listens for connections on the provided port
+            </summary>
+        </member>
+        <member name="M:BoggleServer.Server.ConnectionReceived(System.IAsyncResult)">
+            <summary>
+            Deals with connection requests
+            </summary>
+        </member>
+        <member name="M:BoggleServer.Server.PlayerNameReceived(System.String,System.Exception,System.Object)">
+            <summary>
+            Checks to see if the user sent in the command PLAY (username)
+            If so, sets the players name, if not, sends ignoring command back to the client
+            </summary>
+            <param name="name">Name the user sent in via Play command</param>
+            <param name="e">Exception</param>
+            <param name="p">Payload</param>
+        </member>
+        <member name="M:BoggleServer.Server.CommandReceivedCallback(System.String,System.Exception,System.Object)">
+            <summary>
+            Receives commands from the players once the game is setup
+            </summary>
+            <param name="command">Command sent from player client</param>
+            <param name="e">Exception</param>
+            <param name="socketGameTuple">Tuple that contains the socket and the game object</param>
+        </member>
+        <member name="M:BoggleServer.Server.RunWebServer(System.Int32)">
+            <summary>
+            Begins an instance of a Web Server
+            </summary>
+            <param name="port"></param>
+        </member>
+        <member name="M:BoggleServer.Server.WebConnectionReceived(System.IAsyncResult)">
+            <summary>
+            Receives web connections and sets up a Begin Receive for the socket
+            </summary>
+            <param name="ar">Async result</param>
+        </member>
+        <member name="M:BoggleServer.Server.HttpRequestReceived(System.String,System.Exception,System.Object)">
+            <summary>
+            Retrieves the HTTP Request and finds the html to send back in response
+            </summary>
+            <param name="request">The request sent in</param>
+            <param name="e">Possible Exception</param>
+            <param name="payload">Payload</param>
+        </member>
+        <member name="M:BoggleServer.Server.HtmlForPage(System.String)">
+            <summary>
+            Retrieves the html for the body depending on the page requested
+            </summary>
+            <param name="page">The page requested</param>
+            <returns></returns>
+        </member>
+        <member name="M:BoggleServer.Server.GenerateGameHtml(System.String,MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Generates the Html to display the Game Page
+            </summary>
+            <param name="gameId">Id of the game to display</param>
+            <param name="connection">MySql connection used</param>
+            <returns></returns>
+        </member>
+        <member name="M:BoggleServer.Server.GeneratePlayerHtml(System.String,MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Generates Html for the Player's Game Page
+            
+            Invariant: When you update the player 1 display code, you must also update player 2
+            </summary>
+            <param name="name">Name of the player</param>
+            <param name="connection">Connection used for MySql</param>
+            <returns></returns>
+        </member>
+        <member name="M:BoggleServer.Server.GeneratePlayersHtml(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Generates the Page displaying all the players
+            </summary>
+            <param name="connection">MySql connection used</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
